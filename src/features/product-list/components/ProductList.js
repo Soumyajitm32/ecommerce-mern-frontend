@@ -11,7 +11,7 @@ import {
   PlusIcon,
   Squares2X2Icon,
 } from "@heroicons/react/20/solid";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
+import { ChevronLeftIcon, ChevronRightIcon,StarIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 
 const items = [
@@ -954,32 +954,40 @@ export default function ProductList() {
                         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                           {products.map((product) => (
                             <Link to="/product-detail">
-                            <div key={product.id} className="group relative">
-                              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <div key={product.id} className="group relative border-solid border-2 p-2 border-gray-200">
+                              <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
                                 <img
                                   src={product.thumbnail}
-                                  alt={product.imageAlt}
+                                  alt={product.title}
                                   className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                                 />
                               </div>
                               <div className="mt-4 flex justify-between">
                                 <div>
                                   <h3 className="text-sm text-gray-700">
-                                    <a href={product.href}>
+                                    <a href={product.thumbnail}>
                                       <span
                                         aria-hidden="true"
                                         className="absolute inset-0"
                                       />
-                                      {product.name}
+                                      {product.title}
                                     </a>
                                   </h3>
                                   <p className="mt-1 text-sm text-gray-500">
-                                    {product.color}
+                                    <StarIcon className="w-6 h-6 inline"></StarIcon>
+                                    <span className="align-bottom">{product.rating}</span>
                                   </p>
                                 </div>
-                                <p className="text-sm font-medium text-gray-900">
-                                  {product.price}
+                                <div>
+                                     <p className="text-sm font-medium  text-gray-900">
+                                  ${Math.round(product.price*(1-product.discountPercentage/100))}
                                 </p>
+                                         <p className="text-sm font-medium line-through text-gray-400">
+                                  ${product.price}
+                                </p>
+                             
+                                </div>
+                         
                               </div>
                             </div>
                             </Link>
