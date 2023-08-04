@@ -12,7 +12,7 @@ import {
 } from 'react-router-dom';
 import Cart from './features/cart/Cart';
 import CartPage from './pages/CartPage';
-// import Checkout from './pages/Checkout';
+
 import Checkout from './pages/CheckoutPage'
 import ProductDetailPage from './pages/ProductDetailPage';
 import Protected from './features/auth/components/Protected';
